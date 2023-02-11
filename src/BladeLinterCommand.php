@@ -14,22 +14,51 @@ final class BladeLinterCommand extends Command
     protected $signature = 'blade:lint'
         . ' {--backend=auto : One of: auto, cli, eval, ext-ast, php-parser}'
         . ' {--fast}'
+        . ' {--codeclimate}'
         . ' {path?*}';
 
     protected $description = 'Checks Blade template syntax';
 
     public function handle(): int
     {
+        $codeclimate = (bool) $this->option('codeclimate');
+        $allErrors = [];
+
         foreach ($this->getBladeFiles() as $file) {
             $errors = $this->checkFile($file);
             if (count($errors) > 0) {
                 $status = self::FAILURE;
-                foreach ($errors as $error) {
-                    $this->error($error->toString());
+                if (!$codeclimate) {
+                    foreach ($errors as $error) {
+                        $this->error($error->toString());
+                    }
                 }
-            } elseif ($this->getOutput()->isVerbose()) {
+            } elseif ($this->getOutput()->isVerbose() && !$codeclimate) {
                 $this->line("No syntax errors detected in {$file->getPathname()}");
             }
+
+            $allErrors += $errors;
+        }
+
+        if ($codeclimate) {
+            $this->getOutput()->write(json_encode(
+                array_map(function (ErrorRecord $error) {
+                    return [
+                        'type' => 'issue',
+                        'check_name' => 'Laravel Blade Lint',
+                        'description' => $error->message,
+                        'categories' => ['Bug Risk'],
+                        'location' => [
+                            'path' => $error->path,
+                            'lines' => [
+                                'begin' => $error->line,
+                            ],
+                        ],
+                        'severity' => 'blocker'
+                    ];
+                }, $errors),
+                JSON_PRETTY_PRINT
+            ));
         }
 
         return $status ?? self::SUCCESS;

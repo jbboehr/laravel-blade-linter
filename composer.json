@@ -20,6 +20,7 @@
         "illuminate/support": "^9.0"
     },
     "require-dev": {
+        "drupol/composer-plugin-nixify": "dev-main",
         "nikic/php-parser": "*",
         "nunomaduro/larastan": "^2.0",
         "orchestra/testbench": "^7.22.0",
@@ -43,7 +44,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "drupol/composer-plugin-nixify": true
+        }
     },
     "extra": {
         "laravel": {
