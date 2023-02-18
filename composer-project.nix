@@ -141,12 +141,12 @@ with lib; let
                     "id": -1
                 },
                 "type": "cache",
-                "name": "laravel_framework-9.51.0.0",
+                "name": "laravel_framework-9.52.0.0",
                 "urls": [
-                    "https://api.github.com/repos/laravel/framework/zipball/b81123134349a013a738a9f7f715c6ce99d5a414"
+                    "https://api.github.com/repos/laravel/framework/zipball/eb85cd9d72e5bfa54b4d0d9040786f26d6184a9e"
                 ],
-                "cacheFile": "laravel/framework/3833c7fa2d43f27168c261b43e3e5fc6dcd93522.zip",
-                "sha256": "9abe18499d72c8a0b860905ca371197aba14066e3c667e5676f64dd8f901259c"
+                "cacheFile": "laravel/framework/1faf5ada09af4a224cd81bf4be17966eb133c579.zip",
+                "sha256": "925da285d508e445965000e2be89b0496bae25ead8d23a96eb119c9660024a39"
             },
             {
                 "package": {
@@ -165,12 +165,12 @@ with lib; let
                     "id": -1
                 },
                 "type": "cache",
-                "name": "league_commonmark-2.3.8.0",
+                "name": "league_commonmark-2.3.9.0",
                 "urls": [
-                    "https://api.github.com/repos/thephpleague/commonmark/zipball/c493585c130544c4e91d2e0e131e6d35cb0cbc47"
+                    "https://api.github.com/repos/thephpleague/commonmark/zipball/c1e114f74e518daca2729ea8c4bf1167038fa4b5"
                 ],
-                "cacheFile": "league/commonmark/378a63195644b8080db12fb35208f3fc3ab8acf0.zip",
-                "sha256": "4a2af02687a4966271285dc1ccff0f2af2192396b6ee1097a53dc7d4ba23bc7c"
+                "cacheFile": "league/commonmark/18a5b18d8401ee1531486703e06eb3cca51bc192.zip",
+                "sha256": "07c11e20f0ad729895e43bf3dc7e67e1c47e1bd2231e06ed135233877c666481"
             },
             {
                 "package": {
@@ -837,12 +837,12 @@ with lib; let
                     "id": -1
                 },
                 "type": "cache",
-                "name": "nunomaduro_larastan-2.4.0.0",
+                "name": "nunomaduro_larastan-2.4.1.0",
                 "urls": [
-                    "https://api.github.com/repos/nunomaduro/larastan/zipball/14f631348ead3e245651606931863b4f218d1f78"
+                    "https://api.github.com/repos/nunomaduro/larastan/zipball/238fdbfba3aae133cdec73e99826c9b0232141f7"
                 ],
-                "cacheFile": "nunomaduro/larastan/a74be995c5230d5508a5a72d8d31c042f4f924d1.zip",
-                "sha256": "a8afdf80aa6bc1fe43f5e7a5828e5d5940584e966178ad6a9033ef9c79c934f5"
+                "cacheFile": "nunomaduro/larastan/5be06dcc056fc9683f0fbceaceadd4f3ef2b86ad.zip",
+                "sha256": "7c568ad4f7304ba1d84f69ab2103f874a27ef1c9c4f0e7852ca34697dd64f40c"
             },
             {
                 "package": {
@@ -909,12 +909,12 @@ with lib; let
                     "id": -1
                 },
                 "type": "cache",
-                "name": "phpstan_phpstan-1.9.17.0",
+                "name": "phpstan_phpstan-1.9.18.0",
                 "urls": [
-                    "https://api.github.com/repos/phpstan/phpstan/zipball/204e459e7822f2c586463029f5ecec31bb45a1f2"
+                    "https://api.github.com/repos/phpstan/phpstan/zipball/f2d5cf71be91172a57c649770b73c20ebcffb0bf"
                 ],
-                "cacheFile": "phpstan/phpstan/9cfa004e0e697525d593fb2914d439a9c4221609.zip",
-                "sha256": "b5c7eb2350e91ed1e19dfebbe56d12aad202b951bfc8dfab8a0ee058352a9c76"
+                "cacheFile": "phpstan/phpstan/a29ad1dc8ce451d271feb28da5275061ff8e5673.zip",
+                "sha256": "9769ea1e21377d38ab7ad543b8cccd766898c3ad77c3b739c79207a32eced78d"
             },
             {
                 "package": {
@@ -1365,12 +1365,12 @@ with lib; let
                     "id": -1
                 },
                 "type": "cache",
-                "name": "zbateson_mail-mime-parser-2.3.0.0",
+                "name": "zbateson_mail-mime-parser-2.4.0.0",
                 "urls": [
-                    "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/d59e0c5eeb1442fca94bcb3b9d3c6be66318a500"
+                    "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/20b3e48eb799537683780bc8782fbbe9bc25934a"
                 ],
-                "cacheFile": "zbateson/mail-mime-parser/c6e12915fed7ded7517b129446ecefc269fe33a4.zip",
-                "sha256": "fea497fffc47f108044500034c37c86b8ef565502aa0014c7ae3e5a591175055"
+                "cacheFile": "zbateson/mail-mime-parser/4d64af3634b52558747b81c4791c2390d1d9bed0.zip",
+                "sha256": "4e33a46ce9bad1bc1a0a5d5908094015018abbbd550175f7fa738381f1ee2831"
             },
             {
                 "package": {
