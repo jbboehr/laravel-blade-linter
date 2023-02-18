@@ -14,34 +14,32 @@ final class BladeLinterCommand extends Command
     protected $signature = 'blade:lint'
         . ' {--backend=auto : One of: auto, cli, eval, ext-ast, php-parser}'
         . ' {--fast}'
-        . ' {--codeclimate}'
+        . ' {--codeclimate=false : One of: stdout, stderr, false, or a FILE to open}'
         . ' {path?*}';
 
     protected $description = 'Checks Blade template syntax';
 
     public function handle(): int
     {
-        $codeclimate = (bool) $this->option('codeclimate');
+        $codeclimate = $this->getCodeClimateOutput();
         $allErrors = [];
 
         foreach ($this->getBladeFiles() as $file) {
             $errors = $this->checkFile($file);
             if (count($errors) > 0) {
                 $status = self::FAILURE;
-                if (!$codeclimate) {
-                    foreach ($errors as $error) {
-                        $this->error($error->toString());
-                    }
+                foreach ($errors as $error) {
+                    $this->error($error->toString());
                 }
-            } elseif ($this->getOutput()->isVerbose() && !$codeclimate) {
+            } elseif ($this->getOutput()->isVerbose()) {
                 $this->line("No syntax errors detected in {$file->getPathname()}");
             }
 
             $allErrors += $errors;
         }
 
-        if ($codeclimate) {
-            $this->getOutput()->write(json_encode(
+        if ($codeclimate !== null) {
+            fwrite($codeclimate, json_encode(
                 array_map(function (ErrorRecord $error) {
                     return [
                         'type' => 'issue',
@@ -56,7 +54,7 @@ final class BladeLinterCommand extends Command
                         ],
                         'severity' => 'blocker'
                     ];
-                }, $errors),
+                }, $allErrors),
                 JSON_PRETTY_PRINT
             ));
         }
@@ -150,5 +148,19 @@ final class BladeLinterCommand extends Command
         }
 
         return $errors;
+    }
+
+    /**
+     * @return ?resource
+     */
+    private function getCodeClimateOutput(): mixed
+    {
+        $codeclimate = $this->option('codeclimate') ?? 'stderr';
+        return match ((string) $codeclimate) {
+            '', 'false' => null,
+            'stderr' => STDERR,
+            'stdout' => STDOUT,
+            default => fopen($codeclimate, 'w'),
+        };
     }
 }
